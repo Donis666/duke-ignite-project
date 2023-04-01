@@ -80,7 +80,7 @@ def showVideoWFingers():
 
             print(fingerUp)
             
-            if fingerUp[1] == 1:
+            if (1 in fingerUp):
                 # keep changing and make it random
                 
                 # while True:
@@ -92,7 +92,7 @@ def showVideoWFingers():
                     
                     # USE THE hair
                 
-            if fingerUp[1] == 0:
+            else:
                 # no fingers up means stop. 
                 # hair = hairs[index]
                 cv2.putText(frame, 'Stop', (20,20), cv2.FONT_HERSHEY_COMPLEX, 1, (255,255,255), 1, cv2.LINE_AA)
