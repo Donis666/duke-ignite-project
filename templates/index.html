@@ -3,9 +3,37 @@
 <html>
 <head>
     <title>Camera Video Processing</title>
+    <style>
+        /* center the container */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        /* style for the container */
+        .container {
+            text-align: center;
+            max-width: 800px;
+        }
+
+        /* style for the heading */
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+        }
+        
+        /* style for the image */
+        img {
+            max-width: 100%;
+        }
+        </style>
 </head>
 <body>
-    <h1>Camera Video Processing</h1>
-    <img src="{{ url_for('video_feed') }}">
+    <div class="container">
+        <h1>Camera Video Processing</h1>
+        <img src="{{ url_for('video_feed') }}">
+    </div>
 </body>
 </html>
+    </style>

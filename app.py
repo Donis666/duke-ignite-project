@@ -14,7 +14,6 @@ def process_frame(frame):
     # gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     # edges = cv2.Canny(gray, 100, 200)
     
-
     
     height, width, layers = frame.shape
 
@@ -26,16 +25,12 @@ def process_frame(frame):
 
         fingerUp = detector.fingersUp(lmList)
         
-        if (1 in fingerUp):
+        if fingerUp[1] == 1:
 
             cv2.putText(frame, 'Keep Changing Hairstyle', (20,20), cv2.FONT_HERSHEY_COMPLEX, 1, (255,255,255), 1, cv2.LINE_AA)
         else:
 
             cv2.putText(frame, 'Stop', (20,20), cv2.FONT_HERSHEY_COMPLEX, 1, (255,255,255), 1, cv2.LINE_AA)
-
-
-
-
     
     return image
 
@@ -50,6 +45,9 @@ def gen_frames():
         result = base64.b64encode(buffer).decode('utf-8')
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + buffer.tobytes() + b'\r\n')
+    
+    camera.release()
+    cv2.destroyAllWindows()
 
 @app.route('/')
 def index():
