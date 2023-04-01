@@ -21,6 +21,17 @@ def process_frame(frame):
     frame = cv2.resize(frame, ( width//2, height//2))
 
     hands, image = detector.findHands(frame)
+    if hands:
+        lmList = hands[0]
+
+        fingerUp = detector.fingersUp(lmList)
+        
+        if (1 in fingerUp):
+
+            cv2.putText(frame, 'Keep Changing Hairstyle', (20,20), cv2.FONT_HERSHEY_COMPLEX, 1, (255,255,255), 1, cv2.LINE_AA)
+        else:
+
+            cv2.putText(frame, 'Stop', (20,20), cv2.FONT_HERSHEY_COMPLEX, 1, (255,255,255), 1, cv2.LINE_AA)
 
 
 
